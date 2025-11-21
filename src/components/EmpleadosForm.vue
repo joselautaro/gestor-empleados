@@ -12,7 +12,7 @@
         <div style="display: flex; gap: 8px; align-items: center; margin-top: 8px;">
             <input type="number" placeholder="Salario" required class="input" v-model="form.salario">
             <label class="small" style="display: flex; align-items: center; gap: 8px;">
-                <input type="checkbox" v-model="form.activo"/>
+                <input type="checkbox" v-model="form.activo" />
                 Activo
             </label>
         </div>
@@ -54,7 +54,7 @@ watch(
     () => props.empleado,
     (val) => {
         if (val) {
-            form.nombre = val.nombre || '',
+                form.nombre = val.nombre || '',
                 form.apellido = val.apellido || '',
                 form.email = val.email || '',
                 form.puesto = val.puesto || '',
@@ -71,37 +71,37 @@ watch(
             });
         }
     },
-    {inmediate: true}
+    { inmediate: true }
 );
 
-function onsubmit(){
-    if(props.modo === 'editar' && props.empleado){
-        const actualizado = actualizarEmpleado(props.empleado.id, {...form});
+function onsubmit() {
+    if (props.modo === 'editar' && props.empleado) {
+        const actualizado = actualizarEmpleado(props.empleado.id, { ...form });
         emit('updated', actualizado);
-    }else{
-        const nuevo = crearEmpleado({...form});
+    } else {
+        const nuevo = crearEmpleado({ ...form });
         emit('created', nuevo)
         Object.assign(form, {
-                nombre: '',
-                apellido: '',
-                email: '',
-                puesto: '',
-                salario: 0,
-                activo: true
-            });
+            nombre: '',
+            apellido: '',
+            email: '',
+            puesto: '',
+            salario: 0,
+            activo: true
+        });
     }
 }
 
 </script>
 
 <style scoped>
-    .card{
-        padding: 12px;
-    }
+.card {
+    padding: 12px;
+}
 
-    .input{
-        padding: 8px 10px;
-        border-radius: 8px;
-        border: 1px solid rgba(15,23,42,0.06);
-    }
+.input {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+}
 </style>

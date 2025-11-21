@@ -43,7 +43,7 @@
         toggleActivo
     } = useEmpleados();
 
-    const emit = defineEmits(['abrir-editar', 'solitar-eliminar']);
+    const emit = defineEmits(['abrir-editar', 'solicitar-eliminar']);
 
     function onEditar(id){
         seleccionarEmpleado(id);
@@ -55,13 +55,13 @@
 
         const emp = lista.find(e => e.id === id);
 
-        emit('solitar-eliminar',{
+        emit('solicitar-eliminar',{
             id,
             nombre: emp ? `${emp.nombre} ${emp.apellido}`: ''
         });
     }
 
-    function onToggle(){
+    function onToggle(id){
         toggleActivo(id);
     }
 </script>
