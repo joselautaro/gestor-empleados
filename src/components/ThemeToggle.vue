@@ -2,7 +2,7 @@
 
     <button class="btn ghost" @click="toggle">
         
-
+        {{ mode === 'dark' ? 'Dark' : 'Light' }} mode
     </button>
 
 </template>
